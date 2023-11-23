@@ -65,34 +65,43 @@ router.post("/organization/logout", authMiddleware.requireAuth, function(req, re
     });
 })
 
+// update password
+router.post("/organization/changePassword", [authMiddleware.requireAuth, accountsMiddleware.getOrgAccount], function(req, res) {
+    res.locals.user.setPassword(req.body.password, async function(err, user) {
+        if (err) {
+            return res.json({ success: false, message: "Error changing password" });
+        }
+        await res.locals.user.save();
+        return res.json({ success: true, message: "Password updated" });
+    });
+})
+
 // returns the current logged in accounts info
 router.get("/organization", [authMiddleware.requireAuth, accountsMiddleware.getOrgAccount], async(req, res) => {
     res.send({ user: res.locals.user, orgAccount: res.locals.orgAccount });
 });
 
-// update
+// update account information
 router.patch("/organization", [authMiddleware.requireAuth, accountsMiddleware.getOrgAccount], async(req, res) => {
-    try {
-        const orgAccount = res.locals.orgAccount;
-
-        if (req.body.companyName) {
-            orgAccount.companyName = req.body.companyName
-        }
-
-        if (req.body.contactEmail) {
-            orgAccount.contactEmail = req.body.contactEmail
-        }
-
-        if (req.body.contactPhone) {
-            orgAccount.contactPhone = req.body.contactPhone
-        }
-
-        await orgAccount.save()
-        res.send(orgAccount)
-    } catch {
-        res.status(404)
-        res.send({ error: "Account doesn't exist!" })
+    const orgAccount = res.locals.orgAccount;
+    if (req.body.companyName) {
+        orgAccount.companyName = req.body.companyName;
     }
+    if (req.body.contactEmail) {
+        orgAccount.contactEmail = req.body.contactEmail;
+    }
+    if (req.body.contactPhone) {
+        orgAccount.contactPhone = req.body.contactPhone;
+    }
+    await orgAccount.save();
+
+    const user = res.locals.user;
+    if (req.body.username) {
+        user.username = req.body.username;
+    }
+    await user.save();
+
+    res.send({ user, orgAccount });
 })
 
 module.exports = router;
