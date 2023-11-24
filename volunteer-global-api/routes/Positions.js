@@ -6,7 +6,6 @@ const authMiddleware = require('../middleware/authMiddleware');
 const accountsMiddleware = require('../middleware/accountsMiddleware');
 const positionsSchemas = require('../schemas/positionsSchemas');
 const validationMiddleware = require('../middleware/validationMiddleware');
-const { func } = require('joi');
 
 // create a new position (Org account only)
 router.post(

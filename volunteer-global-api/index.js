@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const orgAccountRoutes = require('./routes/OrgAccounts');
 const positionRoutes = require('./routes/Positions');
+const timeSlotRoutes = require('./routes/TimeSlots');
 const User = require('./models/User');
 const passport = require('passport');
 const session = require('express-session');
@@ -30,6 +31,7 @@ mongoose
     // init routes
     app.use('/api/accounts', orgAccountRoutes);
     app.use('/api/positions', positionRoutes);
+    app.use('/api/timeSlots', timeSlotRoutes);
 
     app.listen(5000, () => {
       console.log('Server has started!');
