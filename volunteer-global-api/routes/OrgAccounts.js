@@ -18,6 +18,7 @@ router.post(
       req.body.password,
       function (err, user) {
         if (err) {
+          res.status(500);
           return res.json({
             success: false,
             message: 'Your account could not be saved. Error: ' + err,
@@ -25,6 +26,7 @@ router.post(
         }
         req.login(user, async (er) => {
           if (er) {
+            res.status(500);
             return res.json({ success: false, message: er });
           }
           const orgAccount = new OrgAccount({
@@ -36,6 +38,7 @@ router.post(
           user.accountID = orgAccount._id.toString();
           user.type = 'org';
           await user.save();
+          res.status(201);
           res.json({ success: true, message: 'Account creation sucessful' });
         });
       }
@@ -50,9 +53,11 @@ router.post(
   function (req, res) {
     passport.authenticate('local', function (err, user, info) {
       if (err) {
+        res.status(500);
         return res.json({ success: false, message: err });
       }
       if (!user) {
+        res.status(400);
         return res.json({
           success: false,
           message: 'username or password incorrect',
@@ -60,14 +65,17 @@ router.post(
       }
       req.login(user, function (err) {
         if (err) {
+          res.status(500);
           return res.json({ success: false, message: err });
         }
         if (user.type !== 'org') {
+          res.status(400);
           return res.json({
             success: false,
             message: 'this is not a org account',
           });
         }
+        res.status(200);
         res.json({ success: true, message: 'Authentication successful' });
       });
     })(req, res);
@@ -80,6 +88,7 @@ router.post(
   authMiddleware.requireAuth,
   function (req, res) {
     req.session.destroy(function (err) {
+      res.status(200);
       res.json({ success: true, message: 'Logout successful' });
     });
   }
@@ -96,9 +105,11 @@ router.post(
   function (req, res) {
     res.locals.user.setPassword(req.body.password, async function (err, user) {
       if (err) {
+        res.status(500);
         return res.json({ success: false, message: 'Error changing password' });
       }
       await res.locals.user.save();
+      res.status(200);
       return res.json({ success: true, message: 'Password updated' });
     });
   }
@@ -109,6 +120,7 @@ router.get(
   '/organization',
   [authMiddleware.requireAuth, accountsMiddleware.getOrgAccount],
   async (req, res) => {
+    res.status(200);
     res.send({ user: res.locals.user, orgAccount: res.locals.orgAccount });
   }
 );
@@ -140,7 +152,7 @@ router.patch(
     }
     await user.save();
 
-    res.send({ user, orgAccount });
+    res.send({ success: true, user, orgAccount });
   }
 );
 

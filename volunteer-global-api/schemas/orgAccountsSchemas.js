@@ -4,7 +4,9 @@ const registerSchema = Joi.object({
   username: Joi.string().min(3).required(),
   password: Joi.string().min(3).required(),
   companyName: Joi.string().min(3).required(),
-  contactEmail: Joi.string().email({ tlds: { allow: false } }),
+  contactEmail: Joi.string()
+    .email({ tlds: { allow: false } })
+    .required(),
   contactPhone: Joi.string()
     .length(10)
     .pattern(/^[0-9]+$/)
@@ -21,13 +23,15 @@ const changePasswordSchema = Joi.object({
 });
 
 const updateSchema = Joi.object({
-  username: Joi.string().min(3).required(),
-  companyName: Joi.string().min(3).required(),
-  contactEmail: Joi.string().email({ tlds: { allow: false } }),
+  username: Joi.string().min(3).optional(),
+  companyName: Joi.string().min(3).optional(),
+  contactEmail: Joi.string()
+    .email({ tlds: { allow: false } })
+    .optional(),
   contactPhone: Joi.string()
     .length(10)
     .pattern(/^[0-9]+$/)
-    .required(),
+    .optional(),
 });
 
 module.exports = {
