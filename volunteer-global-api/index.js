@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const orgAccountRoutes = require('./routes/OrgAccounts');
 const positionRoutes = require('./routes/Positions');
 const timeSlotRoutes = require('./routes/TimeSlots');
@@ -17,6 +18,14 @@ mongoose
     // init express
     const app = express();
     app.use(express.json());
+
+    // setup cors
+    const corsOptions = {
+      optionsSuccessStatus: 200,
+      credentials: true,
+      origin: 'http://localhost:3000',
+    };
+    app.use(cors(corsOptions));
 
     // init auth
     app.use(
