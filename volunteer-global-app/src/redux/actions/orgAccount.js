@@ -3,6 +3,7 @@ import {
   LOGIN_ORG_SUCCESS,
   LOGIN_ORG_ERROR,
   LOGOUT_ORG,
+  UPDATE_ORG_POSITIONS,
 } from "../constants";
 import app from "../../utils/axiosConfig";
 
@@ -58,9 +59,26 @@ const logoutOrg = () => {
   };
 };
 
+const updateOrgPositions = () => {
+  return async (dispatch, getState) => {
+    dispatch({ type: LOGIN_ORG_START });
+    const url = "api/positions/";
+    app
+      .get(url)
+      .then((data) =>
+        dispatch({
+          type: UPDATE_ORG_POSITIONS,
+          payload: { positions: data.data },
+        })
+      )
+      .catch((err) => console.log(err));
+  };
+};
+
 const orgAccountActions = {
   loginOrg,
   logoutOrg,
+  updateOrgPositions,
 };
 
 export default orgAccountActions;

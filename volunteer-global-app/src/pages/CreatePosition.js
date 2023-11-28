@@ -1,13 +1,15 @@
 import OrgHeader from "../components/OrgHeader";
 import TitleBar from "../components/TitleBar";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../utils/constants";
 import Loader from "../components/Loader";
 import app from "../utils/axiosConfig";
+import reduxActions from "../redux/actions";
 
 function CreatePosition() {
+  const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.orgAccountReducer.isLoggedIn);
   const navigate = useNavigate();
   const [screeningQuestions, setScreeningQuestions] = useState([]);
@@ -33,6 +35,7 @@ function CreatePosition() {
       .post(url, body)
       .then((data) => {
         setLoading(false);
+        dispatch(reduxActions.orgAccountActions.updateOrgPositions());
         navigate(ROUTES.ORGANIZATION_HOME);
       })
       .catch((err) => {

@@ -3,6 +3,7 @@ import {
   LOGIN_ORG_SUCCESS,
   LOGIN_ORG_ERROR,
   LOGOUT_ORG,
+  UPDATE_ORG_POSITIONS,
 } from "../constants";
 import { createReducer } from "@reduxjs/toolkit";
 
@@ -15,6 +16,7 @@ const initialState = {
   companyName: null,
   contactPhone: null,
   contactEmail: null,
+  positions: [],
 };
 
 const orgAccountReducer = createReducer(initialState, (builder) => {
@@ -44,6 +46,9 @@ const orgAccountReducer = createReducer(initialState, (builder) => {
     state.contactEmail = null;
     state.contactPhone = null;
     state.accountID = null;
+  });
+  builder.addCase(UPDATE_ORG_POSITIONS, (state, action) => {
+    state.positions = action.payload.positions;
   });
 });
 

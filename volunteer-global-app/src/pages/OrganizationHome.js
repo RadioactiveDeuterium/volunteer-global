@@ -2,12 +2,19 @@ import OrgHeader from "../components/OrgHeader";
 import LoginForm from "../components/LoginForm";
 import TitleBar from "../components/TitleBar";
 import OrgRegisterForm from "../components/OrgRegisterForm";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import reduxActions from "../redux/actions";
 
 function OrganizationHome() {
+  const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.orgAccountReducer.isLoggedIn);
   const [formState, setFormState] = useState("login");
+
+  useEffect(() => {
+    if (isLoggedIn)
+      dispatch(reduxActions.orgAccountActions.updateOrgPositions());
+  }, [dispatch, isLoggedIn]);
   return (
     <>
       <OrgHeader active={"view"} />
