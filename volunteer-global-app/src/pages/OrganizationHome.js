@@ -1,5 +1,6 @@
 import OrgHeader from "../components/OrgHeader";
 import LoginForm from "../components/LoginForm";
+import TitleBar from "../components/TitleBar";
 import OrgRegisterForm from "../components/OrgRegisterForm";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -9,9 +10,9 @@ function OrganizationHome() {
   const [formState, setFormState] = useState("login");
   return (
     <>
-      <OrgHeader />
+      <OrgHeader active={"view"} />
       {isLoggedIn ? (
-        <>Logged in!</>
+        <TitleBar content={"My Positions"} />
       ) : (
         <div className="h-screen flex flex-col items-center justify-center bg-purple-200">
           <p className="text-lg font-bold py-2">

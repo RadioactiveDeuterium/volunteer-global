@@ -3,6 +3,7 @@ import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import OrganizationHome from "./pages/OrganizationHome";
+import CreatePosition from "./pages/CreatePosition";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
   {
     path: ROUTES.ORGANIZATION_HOME,
     element: <OrganizationHome />,
+  },
+  {
+    path: ROUTES.CREATE_POSTION,
+    element: <CreatePosition />,
   },
 ]);
 

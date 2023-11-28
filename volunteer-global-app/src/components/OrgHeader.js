@@ -1,8 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../utils/constants";
 import reduxActions from "../redux/actions";
 
-function OrgHeader() {
+function OrgHeader({ active }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isLoggedIn = useSelector((state) => state.orgAccountReducer.isLoggedIn);
 
   return (
@@ -14,9 +17,23 @@ function OrgHeader() {
       {isLoggedIn && (
         <>
           <div className="flex items-center">
-            <p className="text-4xl leading-8">My Positions</p>
+            <p
+              className={`text-4xl leading-8 cursor-pointer ${
+                active === "view" ? "font-bold" : ""
+              }`}
+              onClick={() => navigate(ROUTES.ORGANIZATION_HOME)}
+            >
+              My Positions
+            </p>
             <p className="text-4xl leading-8 px-4">|</p>
-            <p className="text-4xl leading-8">Create New Positions</p>
+            <p
+              className={`text-4xl leading-8 cursor-pointer ${
+                active === "create" ? "font-bold" : ""
+              }`}
+              onClick={() => navigate(ROUTES.CREATE_POSTION)}
+            >
+              Create New Positions
+            </p>
           </div>
           <div className="mr-0 ml-auto flex items-center">
             <p className="text-xl font-bold leading-5 pr-4 cursor-pointer">

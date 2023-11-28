@@ -17,6 +17,7 @@ function LoginForm({ sethtmlFormState }) {
   return (
     <form className="bg-white shadow-md rounded px-8 pt-4 pb-4">
       <div className="mb-4">
+        {/* Username */}
         <label
           className="block text-gray-700 text-sm font-bold mb-2"
           htmlFor="username"
@@ -31,6 +32,7 @@ function LoginForm({ sethtmlFormState }) {
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
+      {/* Password */}
       <div className="mb-2">
         <label
           className="block text-gray-700 text-sm font-bold mb-4"
