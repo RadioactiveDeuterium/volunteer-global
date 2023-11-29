@@ -6,6 +6,12 @@ const createSchema = Joi.object({
   length: Joi.number().required(),
 });
 
+const updateSchema = Joi.object({
+  dateTime: Joi.date().required(),
+  length: Joi.number().required(),
+});
+
 module.exports = {
   createSchema,
+  updateSchema,
 };

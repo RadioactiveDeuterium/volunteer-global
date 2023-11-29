@@ -52,7 +52,11 @@ router.get('/:id', async function (req, res) {
 // update timeslot (owner only)
 router.patch(
   '/:id',
-  [authMiddleware.requireAuth, accountsMiddleware.getOrgAccount],
+  [
+    authMiddleware.requireAuth,
+    validationMiddleware.validateSchema(timeSlotsSchemas.updateSchema),
+    accountsMiddleware.getOrgAccount,
+  ],
   async function (req, res) {
     const timeSlot = await TimeSlot.findById(req.params.id);
     const position = await Position.findById(timeSlot.PositionID);
