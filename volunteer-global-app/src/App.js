@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import OrganizationHome from "./pages/OrganizationHome";
 import CreatePosition from "./pages/CreatePosition";
+import ManagePosition from "./pages/ManagePosition";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: ROUTES.CREATE_POSTION,
     element: <CreatePosition />,
+  },
+  {
+    path: ROUTES.MANAGE_POSITION,
+    element: <ManagePosition />,
   },
 ]);
 
