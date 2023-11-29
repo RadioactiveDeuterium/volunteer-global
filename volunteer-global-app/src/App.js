@@ -5,6 +5,7 @@ import LandingPage from "./pages/LandingPage";
 import OrganizationHome from "./pages/OrganizationHome";
 import CreatePosition from "./pages/CreatePosition";
 import ManagePosition from "./pages/ManagePosition";
+import ManagePositionSchedule from "./pages/ManagePositionSchedule";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: ROUTES.MANAGE_POSITION,
     element: <ManagePosition />,
+  },
+  {
+    path: ROUTES.MANAGE_POSITION_SCHEDULE,
+    element: <ManagePositionSchedule />,
   },
 ]);
 

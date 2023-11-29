@@ -94,17 +94,30 @@ function ManagePosition() {
                 onChange={(e) => updateDescription(e.target.value)}
                 value={position.Description}
               />
+              <div className="flex">
+                <button
+                  className="flex mx-auto mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  type="button"
+                  onClick={updatePosition}
+                >
+                  {loading && <Loader />}
+                  Save
+                </button>
+                <button
+                  className="flex mx-auto mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  type="button"
+                  onClick={() =>
+                    navigate(
+                      `${ROUTES.MANAGE_POSITION_SCHEDULE_STUB}${positionID}`
+                    )
+                  }
+                >
+                  Manage Schedule
+                </button>
+              </div>
             </div>
             <div className="w-1/2 px-2">{/* TODO: Show volunteers */}</div>
           </div>
-          <button
-            className="flex mx-auto mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-            onClick={updatePosition}
-          >
-            {loading && <Loader />}
-            Save
-          </button>
         </>
       )}
     </div>
