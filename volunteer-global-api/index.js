@@ -4,6 +4,7 @@ const cors = require('cors');
 const orgAccountRoutes = require('./routes/OrgAccounts');
 const positionRoutes = require('./routes/Positions');
 const timeSlotRoutes = require('./routes/TimeSlots');
+const indAccountRoutes = require('./routes/IndAccounts');
 const User = require('./models/User');
 const passport = require('passport');
 const session = require('express-session');
@@ -38,7 +39,8 @@ mongoose
     passport.use(new LocalStrategy(User.authenticate()));
 
     // init routes
-    app.use('/api/accounts', orgAccountRoutes);
+    app.use('/api/accounts/organization', orgAccountRoutes);
+    app.use('/api/accounts/individual', indAccountRoutes);
     app.use('/api/positions', positionRoutes);
     app.use('/api/timeSlots', timeSlotRoutes);
 

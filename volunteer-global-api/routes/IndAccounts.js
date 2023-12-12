@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const OrgAccount = require('../models/OrgAccount');
-const User = require('../models/User');
 const passport = require('passport');
+const IndAccount = require('../models/IndAccount');
+const User = require('../models/User');
+const indAccountSchemas = require('../schemas/indAccountsSchemas');
+const validationMiddleware = require('../middleware/validationMiddleware');
 const authMiddleware = require('../middleware/authMiddleware');
 const accountsMiddleware = require('../middleware/accountsMiddleware');
-const validationMiddleware = require('../middleware/validationMiddleware');
-const orgAccountSchemas = require('../schemas/orgAccountsSchemas');
 
-// org register
+// ind register
 router.post(
   '/register',
-  [validationMiddleware.validateSchema(orgAccountSchemas.registerSchema)],
+  [validationMiddleware.validateSchema(indAccountSchemas.registerSchema)],
   function (req, res) {
     User.register(
       new User({ username: req.body.username }),
@@ -29,14 +29,14 @@ router.post(
             res.status(500);
             return res.json({ success: false, message: er });
           }
-          const orgAccount = new OrgAccount({
-            companyName: req.body.companyName,
-            contactEmail: req.body.contactEmail,
-            contactPhone: req.body.contactPhone,
+          const indAccount = new IndAccount({
+            Name: req.body.name,
+            Email: req.body.email,
+            Phone: req.body.phone,
           });
-          await orgAccount.save();
-          user.accountID = orgAccount._id.toString();
-          user.type = 'org';
+          await indAccount.save();
+          user.accountID = indAccount._id.toString();
+          user.type = 'ind';
           await user.save();
           res.status(201);
           res.json({ success: true, message: 'Account creation sucessful' });
@@ -46,10 +46,10 @@ router.post(
   }
 );
 
-// org login
+// ind login
 router.post(
   '/login',
-  [validationMiddleware.validateSchema(orgAccountSchemas.loginSchema)],
+  [validationMiddleware.validateSchema(indAccountSchemas.loginSchema)],
   function (req, res) {
     passport.authenticate('local', function (err, user, info) {
       if (err) {
@@ -68,11 +68,11 @@ router.post(
           res.status(500);
           return res.json({ success: false, message: err });
         }
-        if (user.type !== 'org') {
+        if (user.type !== 'ind') {
           res.status(400);
           return res.json({
             success: false,
-            message: 'this is not a org account',
+            message: 'this is not a ind account',
           });
         }
         res.status(200);
@@ -95,8 +95,8 @@ router.post(
   '/changePassword',
   [
     authMiddleware.requireAuth,
-    validationMiddleware.validateSchema(orgAccountSchemas.changePasswordSchema),
-    accountsMiddleware.getOrgAccount,
+    validationMiddleware.validateSchema(indAccountSchemas.changePasswordSchema),
+    accountsMiddleware.getIndAccount,
   ],
   function (req, res) {
     res.locals.user.setPassword(req.body.password, async function (err, user) {
@@ -114,10 +114,10 @@ router.post(
 // returns the current logged in accounts info
 router.get(
   '/',
-  [authMiddleware.requireAuth, accountsMiddleware.getOrgAccount],
+  [authMiddleware.requireAuth, accountsMiddleware.getIndAccount],
   async (req, res) => {
     res.status(200);
-    res.send({ user: res.locals.user, orgAccount: res.locals.orgAccount });
+    res.send({ user: res.locals.user, indAccount: res.locals.indAccount });
   }
 );
 
@@ -126,21 +126,21 @@ router.patch(
   '/',
   [
     authMiddleware.requireAuth,
-    validationMiddleware.validateSchema(orgAccountSchemas.updateSchema),
-    accountsMiddleware.getOrgAccount,
+    validationMiddleware.validateSchema(indAccountSchemas.updateSchema),
+    accountsMiddleware.getIndAccount,
   ],
   async (req, res) => {
-    const orgAccount = res.locals.orgAccount;
-    if (req.body.companyName) {
-      orgAccount.companyName = req.body.companyName;
+    const indAccount = res.locals.indAccount;
+    if (req.body.name) {
+      indAccount.Name = req.body.name;
     }
-    if (req.body.contactEmail) {
-      orgAccount.contactEmail = req.body.contactEmail;
+    if (req.body.email) {
+      indAccount.Email = req.body.email;
     }
-    if (req.body.contactPhone) {
-      orgAccount.contactPhone = req.body.contactPhone;
+    if (req.body.phone) {
+      indAccount.Phone = req.body.phone;
     }
-    await orgAccount.save();
+    await indAccount.save();
 
     const user = res.locals.user;
     if (req.body.username) {
@@ -148,7 +148,7 @@ router.patch(
     }
     await user.save();
 
-    res.send({ success: true, user, orgAccount });
+    res.send({ success: true, user, indAccount });
   }
 );
 
