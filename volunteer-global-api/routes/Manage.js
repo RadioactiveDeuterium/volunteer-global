@@ -57,4 +57,53 @@ router.post(
   }
 );
 
+// accept a applicant (org owner only)
+router.post(
+  '/acceptApplication/:id',
+  [authMiddleware.requireAuth, accountsMiddleware.getOrgAccount],
+  async (req, res) => {
+    const userPositionLink = await UserPositionLink.findById(req.params.id);
+    const ownerPosition = await Position.findById(userPositionLink.PositionID);
+    if (res.locals.orgAccount._id.toString() !== ownerPosition.OrgID) {
+      return res.sendStatus(403);
+    }
+    userPositionLink.Status = 'accepted';
+    await userPositionLink.save();
+    res.send({ success: true, message: 'User accepted' });
+  }
+);
+
+// reject a applicant (org owner only)
+router.post(
+  '/rejectApplication/:id',
+  [authMiddleware.requireAuth, accountsMiddleware.getOrgAccount],
+  async (req, res) => {
+    const userPositionLink = await UserPositionLink.findById(req.params.id);
+    const ownerPosition = await Position.findById(userPositionLink.PositionID);
+    if (res.locals.orgAccount._id.toString() !== ownerPosition.OrgID) {
+      return res.sendStatus(403);
+    }
+    userPositionLink.Status = 'rejected';
+    await userPositionLink.save();
+    res.send({ success: true, message: 'User rejected' });
+  }
+);
+
+// withdraw a applaction (ind owner only)
+router.post(
+  '/withdrawApplication/:id',
+  [authMiddleware.requireAuth, accountsMiddleware.getIndAccount],
+  async (req, res) => {
+    const userPositionLink = await UserPositionLink.findById(req.params.id);
+    console.log(res.locals.indAccount._id.toString());
+    console.log(userPositionLink.UserID);
+    if (res.locals.indAccount._id.toString() !== userPositionLink.UserID) {
+      return res.sendStatus(403);
+    }
+    userPositionLink.Status = 'withdrawn';
+    await userPositionLink.save();
+    res.send({ success: true, message: 'User withdrawn' });
+  }
+);
+
 module.exports = router;
