@@ -9,6 +9,7 @@ import ManagePositionSchedule from "./pages/ManagePositionSchedule";
 import IndividualHome from "./pages/IndividualHome";
 import ApplyPosition from "./pages/ApplyPosition";
 import MyOppertunities from "./pages/MyOppertunities";
+import ManageIndividualSchedule from "./pages/ManageIndividualSchedule";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: ROUTES.INDIVIDUAL_OPPERTUNITIES,
     element: <MyOppertunities />,
+  },
+  {
+    path: ROUTES.INDIVIDUAL_POSITION_SCHEDULE,
+    element: <ManageIndividualSchedule />,
   },
 ]);
 

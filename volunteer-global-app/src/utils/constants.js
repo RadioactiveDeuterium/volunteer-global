@@ -10,4 +10,6 @@ export const ROUTES = {
   APPLY_POSITION: "/volunteer/apply/:positionID",
   APPLY_POSITION_STUB: "/volunteer/apply/",
   INDIVIDUAL_OPPERTUNITIES: "/volunteer/oppertunities",
+  INDIVIDUAL_POSITION_SCHEDULE: "/volunteer/oppertunity/schedule/:positionID",
+  INDIVIDUAL_POSITION_SCHEDULE_STUB: "/volunteer/oppertunity/schedule/",
 };

@@ -19,7 +19,9 @@ function MyOppertunityCard({ orgName, positionTitle, id, status }) {
         <button
           className="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-max mx-4 whitespace-nowrap"
           type="button"
-          onClick={() => navigate(`${ROUTES.APPLY_POSITION_STUB}${id}`)}
+          onClick={() =>
+            navigate(`${ROUTES.INDIVIDUAL_POSITION_SCHEDULE_STUB}${id}`)
+          }
         >
           Manage
         </button>

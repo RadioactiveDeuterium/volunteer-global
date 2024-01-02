@@ -26,7 +26,7 @@ function MyOppertunities() {
           {userPositionLinks.map((link) => (
             <MyOppertunityCard
               status={link.Status}
-              id={link._id}
+              id={link.position._id}
               positionTitle={link.position.Title}
             />
           ))}
