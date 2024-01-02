@@ -5,6 +5,7 @@ const orgAccountRoutes = require('./routes/OrgAccounts');
 const positionRoutes = require('./routes/Positions');
 const timeSlotRoutes = require('./routes/TimeSlots');
 const indAccountRoutes = require('./routes/IndAccounts');
+const manageRoutes = require('./routes/Manage');
 const User = require('./models/User');
 const passport = require('passport');
 const session = require('express-session');
@@ -43,6 +44,7 @@ mongoose
     app.use('/api/accounts/individual', indAccountRoutes);
     app.use('/api/positions', positionRoutes);
     app.use('/api/timeSlots', timeSlotRoutes);
+    app.use('/api/manage', manageRoutes);
 
     app.listen(5000, () => {
       console.log('Server has started!');

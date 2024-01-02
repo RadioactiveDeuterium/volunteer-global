@@ -19,6 +19,12 @@ router.post(
   async function (req, res) {
     // get parent position and check ownership
     const position = await Position.findById(req.body.positionID);
+    // if not found
+    if (!position) {
+      res.status(404);
+      res.json({ success: false, message: 'Position not found' });
+      return;
+    }
     if (res.locals.orgAccount._id.toString() !== position.OrgID) {
       return res.sendStatus(403);
     }
@@ -60,6 +66,12 @@ router.patch(
   async function (req, res) {
     const timeSlot = await TimeSlot.findById(req.params.id);
     const position = await Position.findById(timeSlot.PositionID);
+    // if not found
+    if (!position) {
+      res.status(404);
+      res.json({ success: false, message: 'Position not found' });
+      return;
+    }
     // check ownership
     if (res.locals.orgAccount._id.toString() !== position.OrgID) {
       return res.sendStatus(403);
