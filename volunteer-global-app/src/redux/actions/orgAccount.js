@@ -62,7 +62,7 @@ const logoutOrg = () => {
 const updateOrgPositions = () => {
   return async (dispatch, getState) => {
     dispatch({ type: LOGIN_ORG_START });
-    const url = "api/positions/";
+    const url = "api/positions/byLoggedOrg";
     app
       .get(url)
       .then((data) =>

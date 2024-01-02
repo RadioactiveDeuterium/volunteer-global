@@ -50,6 +50,19 @@ router.get('/', async function (req, res) {
   res.send(positions);
 });
 
+// retrieve positions for current org
+router.get(
+  '/byLoggedOrg',
+  [authMiddleware.requireAuth, accountsMiddleware.getOrgAccount],
+  async function (req, res) {
+    const positions = await Position.find({
+      OrgID: res.locals.orgAccount._id.toString(),
+    });
+    res.status(200);
+    res.send(positions);
+  }
+);
+
 // retrieve a position and owner details (public)
 router.get('/:id', async function (req, res) {
   const position = await Position.findById(req.params.id);

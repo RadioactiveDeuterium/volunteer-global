@@ -95,8 +95,6 @@ router.post(
   [authMiddleware.requireAuth, accountsMiddleware.getIndAccount],
   async (req, res) => {
     const userPositionLink = await UserPositionLink.findById(req.params.id);
-    console.log(res.locals.indAccount._id.toString());
-    console.log(userPositionLink.UserID);
     if (res.locals.indAccount._id.toString() !== userPositionLink.UserID) {
       return res.sendStatus(403);
     }
