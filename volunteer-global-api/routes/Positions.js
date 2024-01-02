@@ -17,8 +17,16 @@ router.get(
     const applications = await UserPositionLink.find({
       UserID: res.locals.indAccount._id.toString(),
     });
+    var result = [];
+    for (app of applications) {
+      const position = await Position.findById(app.PositionID);
+      result.push({
+        ...app._doc,
+        position,
+      });
+    }
     res.status(200);
-    res.json({ success: true, applications: applications });
+    res.json({ success: true, applications: result });
   }
 );
 
@@ -49,8 +57,6 @@ router.get('/', async function (req, res) {
   var result = [];
   for (pos of positions) {
     const org = await OrgAccount.findById(pos.OrgID);
-    console.log(pos);
-    console.log(org);
     result.push({
       ...pos._doc,
       org,

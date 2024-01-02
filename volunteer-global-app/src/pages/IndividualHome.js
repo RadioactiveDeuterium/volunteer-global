@@ -11,11 +11,25 @@ function IndividualHome() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.indAccountReducer.isLoggedIn);
   const positions = useSelector((state) => state.positionsReducer.positions);
-  const name = useSelector((state) => state.indAccountReducer.name);
+  const userPositionLinks = useSelector(
+    (state) => state.indAccountReducer.userPositionLinks
+  );
+  // const name = useSelector((state) => state.indAccountReducer.name);
   const [formState, setFormState] = useState("login");
 
+  const checkApplied = (pos) => {
+    if (userPositionLinks) {
+      const found = userPositionLinks.find((el) => el.PositionID === pos._id);
+      if (found) return true;
+    }
+    return false;
+  };
+
   useEffect(() => {
-    if (isLoggedIn) dispatch(reduxActions.positionsActions.updatePositions());
+    if (isLoggedIn) {
+      dispatch(reduxActions.positionsActions.updatePositions());
+      dispatch(reduxActions.indAccountActions.updateUserPositionLinks());
+    }
   }, [dispatch, isLoggedIn]);
   return (
     <>
@@ -31,6 +45,7 @@ function IndividualHome() {
                 positionTitle={position.Title}
                 description={position.Description}
                 id={position._id}
+                alreadyApplied={checkApplied(position)}
               />
             ))}
           </div>

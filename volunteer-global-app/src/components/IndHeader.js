@@ -21,7 +21,7 @@ function IndHeader({ active }) {
               className={`text-4xl leading-8 cursor-pointer ${
                 active === "view" ? "font-bold" : ""
               }`}
-              onClick={() => navigate(ROUTES.ORGANIZATION_HOME)}
+              onClick={() => navigate(ROUTES.INDIVIDUAL_HOME)}
             >
               Browse Oppertunities
             </p>
@@ -30,7 +30,7 @@ function IndHeader({ active }) {
               className={`text-4xl leading-8 cursor-pointer ${
                 active === "create" ? "font-bold" : ""
               }`}
-              onClick={() => navigate(ROUTES.CREATE_POSTION)}
+              onClick={() => navigate(ROUTES.INDIVIDUAL_OPPERTUNITIES)}
             >
               My Oppertunities
             </p>

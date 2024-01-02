@@ -7,7 +7,7 @@ function LandingPage() {
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-purple-200">
       <h1 className="text-7xl text-center">Volunteer Global</h1>
-      <div classNameName="flex flex-col sm:flex-row">
+      <div className="flex flex-col sm:flex-row">
         <button
           type="button"
           onClick={() => navigate(ROUTES.INDIVIDUAL_HOME)}

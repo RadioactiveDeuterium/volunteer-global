@@ -3,6 +3,7 @@ import {
   LOGIN_IND_SUCCESS,
   LOGIN_IND_ERROR,
   LOGOUT_IND,
+  UPDATE_IND_LINKS,
 } from "../constants";
 import app from "../../utils/axiosConfig";
 
@@ -57,9 +58,25 @@ const logoutInd = () => {
   };
 };
 
+const updateUserPositionLinks = () => {
+  return async (dispatch, getState) => {
+    const url = "api/positions/userApplications";
+    app
+      .get(url)
+      .then((data) =>
+        dispatch({
+          type: UPDATE_IND_LINKS,
+          payload: { userPositionLinks: data.data.applications },
+        })
+      )
+      .catch((err) => console.log(err));
+  };
+};
+
 const indAccountActions = {
   loginInd,
   logoutInd,
+  updateUserPositionLinks,
 };
 
 export default indAccountActions;

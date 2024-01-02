@@ -7,4 +7,7 @@ export const ROUTES = {
   MANAGE_POSITION_SCHEDULE: "/organization/manageSchedule/:positionID",
   MANAGE_POSITION_SCHEDULE_STUB: "/organization/manageSchedule/",
   INDIVIDUAL_HOME: "/volunteer",
+  APPLY_POSITION: "/volunteer/apply/:positionID",
+  APPLY_POSITION_STUB: "/volunteer/apply/",
+  INDIVIDUAL_OPPERTUNITIES: "/volunteer/oppertunities",
 };

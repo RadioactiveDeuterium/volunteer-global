@@ -3,6 +3,7 @@ import {
   LOGIN_IND_SUCCESS,
   LOGIN_IND_ERROR,
   LOGOUT_IND,
+  UPDATE_IND_LINKS,
 } from "../constants";
 import { createReducer } from "@reduxjs/toolkit";
 
@@ -15,7 +16,7 @@ const initialState = {
   name: null,
   phone: null,
   email: null,
-  positions: [],
+  userPositionLinks: [],
 };
 
 const indAccountReducer = createReducer(initialState, (builder) => {
@@ -45,6 +46,10 @@ const indAccountReducer = createReducer(initialState, (builder) => {
     state.email = null;
     state.phone = null;
     state.accountID = null;
+    state.userPositionLinks = null;
+  });
+  builder.addCase(UPDATE_IND_LINKS, (state, action) => {
+    state.userPositionLinks = action.payload.userPositionLinks;
   });
 });
 
