@@ -46,8 +46,18 @@ router.post(
 // retrieve all positions
 router.get('/', async function (req, res) {
   const positions = await Position.find({});
+  var result = [];
+  for (pos of positions) {
+    const org = await OrgAccount.findById(pos.OrgID);
+    console.log(pos);
+    console.log(org);
+    result.push({
+      ...pos._doc,
+      org,
+    });
+  }
   res.status(200);
-  res.send(positions);
+  res.send(result);
 });
 
 // retrieve positions for current org

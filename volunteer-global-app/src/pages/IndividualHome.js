@@ -1,34 +1,33 @@
-import OrgHeader from "../components/OrgHeader";
+import IndHeader from "../components/IndHeader";
 import LoginForm from "../components/LoginForm";
 import TitleBar from "../components/TitleBar";
 import OrgRegisterForm from "../components/OrgRegisterForm";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import reduxActions from "../redux/actions";
-import PositionCard from "../components/PositionCard";
+import BrowsePositionCard from "../components/BrowsePositionCard";
 
-function OrganizationHome() {
+function IndividualHome() {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state) => state.orgAccountReducer.isLoggedIn);
-  const positions = useSelector((state) => state.orgAccountReducer.positions);
-  const orgName = useSelector((state) => state.orgAccountReducer.companyName);
+  const isLoggedIn = useSelector((state) => state.indAccountReducer.isLoggedIn);
+  const positions = useSelector((state) => state.positionsReducer.positions);
+  const name = useSelector((state) => state.indAccountReducer.name);
   const [formState, setFormState] = useState("login");
 
   useEffect(() => {
-    if (isLoggedIn)
-      dispatch(reduxActions.orgAccountActions.updateOrgPositions());
+    if (isLoggedIn) dispatch(reduxActions.positionsActions.updatePositions());
   }, [dispatch, isLoggedIn]);
   return (
     <>
-      <OrgHeader active={"view"} />
+      <IndHeader active={"view"} />
       {isLoggedIn ? (
         <>
-          <TitleBar content={"My Positions"} />
+          <TitleBar content={"Browse Oppertunities"} />
           <div className="w-2/3 mx-auto">
             {positions.map((position) => (
-              <PositionCard
+              <BrowsePositionCard
                 key={position._id}
-                orgName={orgName}
+                orgName={position.org.companyName}
                 positionTitle={position.Title}
                 description={position.Description}
                 id={position._id}
@@ -42,7 +41,7 @@ function OrganizationHome() {
             Please log in or create an account
           </p>
           {formState === "login" ? (
-            <LoginForm setFormState={setFormState} accType={"org"} />
+            <LoginForm setFormState={setFormState} accType={"ind"} />
           ) : (
             <OrgRegisterForm setFormState={setFormState} />
           )}
@@ -52,4 +51,4 @@ function OrganizationHome() {
   );
 }
 
-export default OrganizationHome;
+export default IndividualHome;

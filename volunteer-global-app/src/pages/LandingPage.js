@@ -10,7 +10,7 @@ function LandingPage() {
       <div classNameName="flex flex-col sm:flex-row">
         <button
           type="button"
-          onClick={() => navigate(ROUTES.VOLUNTEER_HOME)}
+          onClick={() => navigate(ROUTES.INDIVIDUAL_HOME)}
           className="px-4 py-2 m-4 border border-transparent text-lg leading-6 font-medium rounded-md text-white bg-rose-600 hover:bg-rose-500 focus:border-rose-700 active:bg-rose-700 center"
         >
           I'm a Volunteer

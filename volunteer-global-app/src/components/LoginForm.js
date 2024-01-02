@@ -3,7 +3,7 @@ import reduxActions from "../redux/actions";
 import { useState } from "react";
 import Loader from "./Loader";
 
-function LoginForm({ sethtmlFormState }) {
+function LoginForm({ sethtmlFormState, accType }) {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.orgAccountReducer.loading);
   const loginError = useSelector((state) => state.orgAccountReducer.loginError);
@@ -11,7 +11,12 @@ function LoginForm({ sethtmlFormState }) {
   const [password, setPassword] = useState("");
 
   const login = () => {
-    dispatch(reduxActions.orgAccountActions.loginOrg(username, password));
+    if (accType === "org") {
+      dispatch(reduxActions.orgAccountActions.loginOrg(username, password));
+    }
+    if (accType === "ind") {
+      dispatch(reduxActions.indAccountActions.loginInd(username, password));
+    }
   };
 
   return (
