@@ -12,6 +12,7 @@ function ManagePosition() {
   const { positionID } = useParams();
   const navigate = useNavigate();
   const [position, setPosition] = useState(null);
+  const [volunteerDetails, setVolunteerDetails] = useState([]);
   const isLoggedIn = useSelector((state) => state.orgAccountReducer.isLoggedIn);
   const [loading, setLoading] = useState(false);
 
@@ -21,7 +22,12 @@ function ManagePosition() {
 
   useEffect(() => {
     const url = `/api/positions/${positionID}`;
-    app.get(url).then((data) => setPosition(data.data.position));
+
+    app.get(url).then((data) => {
+      setPosition(data.data.position);
+      setVolunteerDetails(data.data.volunteerDetails);
+      console.log(data.data.volunteerDetails);
+    });
   }, [positionID]);
 
   const updateTitle = (title) => {
@@ -116,7 +122,16 @@ function ManagePosition() {
                 </button>
               </div>
             </div>
-            <div className="w-1/2 px-2">{/* TODO: Show volunteers */}</div>
+            <div className="w-1/2 px-2">
+              <p className="font-bold text-lg">Accepted Volunteers:</p>
+              {volunteerDetails.map((item) => (
+                <div className="mt-4">
+                  <p>{item.user.Name}</p>
+                  <p>{item.user.Phone}</p>
+                  <p>{item.user.Email}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </>
       )}
