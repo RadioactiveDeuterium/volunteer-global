@@ -6,6 +6,8 @@ export const ROUTES = {
   MANAGE_POSITION_STUB: "/organization/manage/",
   MANAGE_POSITION_SCHEDULE: "/organization/manageSchedule/:positionID",
   MANAGE_POSITION_SCHEDULE_STUB: "/organization/manageSchedule/",
+  REVIEW_APPLICATIONS: "/organization/reviewApplications/:positionID",
+  REVIEW_APPLICATIONS_STUB: "/organization/reviewApplications/",
   INDIVIDUAL_HOME: "/volunteer",
   APPLY_POSITION: "/volunteer/apply/:positionID",
   APPLY_POSITION_STUB: "/volunteer/apply/",

@@ -18,6 +18,7 @@ function OrganizationHome() {
     if (isLoggedIn)
       dispatch(reduxActions.orgAccountActions.updateOrgPositions());
   }, [dispatch, isLoggedIn]);
+
   return (
     <>
       <OrgHeader active={"view"} />
@@ -32,6 +33,7 @@ function OrganizationHome() {
                 positionTitle={position.Title}
                 description={position.Description}
                 id={position._id}
+                hasApplications={position.hasApplications}
               />
             ))}
           </div>

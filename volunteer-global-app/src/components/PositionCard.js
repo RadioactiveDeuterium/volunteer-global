@@ -1,7 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../utils/constants";
 
-function PositionCard({ orgName, positionTitle, description, id }) {
+function PositionCard({
+  orgName,
+  positionTitle,
+  description,
+  id,
+  hasApplications,
+}) {
   const navigate = useNavigate();
   return (
     <div className="flex bg-slate-200 p-4 rounded-lg mt-2 items-center justify-center">
@@ -12,12 +18,15 @@ function PositionCard({ orgName, positionTitle, description, id }) {
       <div className="flex-1">
         <p className="h-full">{description}</p>
       </div>
-      <button
-        className="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-max mx-4 whitespace-nowrap"
-        type="button"
-      >
-        Review Applications
-      </button>
+      {hasApplications && (
+        <button
+          className="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-max mx-4 whitespace-nowrap"
+          type="button"
+          onClick={() => navigate(`${ROUTES.REVIEW_APPLICATIONS_STUB}${id}`)}
+        >
+          Review Applications
+        </button>
+      )}
       <button
         className="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         type="button"

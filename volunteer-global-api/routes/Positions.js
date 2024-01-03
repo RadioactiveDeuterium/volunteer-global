@@ -30,6 +30,32 @@ router.get(
   }
 );
 
+// get pending applications for a position (org owner only)
+router.get(
+  '/pendingApplications/:id',
+  [authMiddleware.requireAuth, accountsMiddleware.getOrgAccount],
+  async function (req, res) {
+    const position = await Position.findById(req.params.id);
+    if (position.OrgID !== res.locals.orgAccount._id.toString()) {
+      return res.status(403);
+    }
+    const applications = await UserPositionLink.find({
+      PositionID: req.params.id,
+      Status: 'pending',
+    });
+    var result = [];
+    for (app of applications) {
+      const user = await IndAccount.findById(app.UserID);
+      result.push({
+        ...user._doc,
+        ...app._doc,
+      });
+    }
+    res.status(200);
+    return res.json(result);
+  }
+);
+
 // create a new position (Org account only)
 router.post(
   '/',
@@ -74,8 +100,25 @@ router.get(
     const positions = await Position.find({
       OrgID: res.locals.orgAccount._id.toString(),
     });
+    var result = [];
+    for (pos of positions) {
+      // check applicant data
+      var hasApplications = false;
+      if (!hasApplications) {
+        const applications = await UserPositionLink.find({
+          PositionID: pos._id.toString(),
+        });
+        for (app of applications) {
+          if (app.Status === 'pending') hasApplications = true;
+        }
+      }
+      result.push({
+        ...pos._doc,
+        hasApplications: hasApplications,
+      });
+    }
     res.status(200);
-    res.send(positions);
+    res.send(result);
   }
 );
 
