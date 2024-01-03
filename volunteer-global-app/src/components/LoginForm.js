@@ -3,7 +3,7 @@ import reduxActions from "../redux/actions";
 import { useState } from "react";
 import Loader from "./Loader";
 
-function LoginForm({ sethtmlFormState, accType }) {
+function LoginForm({ setFormState, accType }) {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.orgAccountReducer.loading);
   const loginError = useSelector((state) => state.orgAccountReducer.loginError);
@@ -64,7 +64,7 @@ function LoginForm({ sethtmlFormState, accType }) {
         </button>
         <p
           className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 cursor-pointer pl-2"
-          onClick={() => sethtmlFormState("register")}
+          onClick={() => setFormState("register")}
         >
           Create Account
         </p>

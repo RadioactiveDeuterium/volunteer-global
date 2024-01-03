@@ -1,7 +1,7 @@
 import IndHeader from "../components/IndHeader";
 import LoginForm from "../components/LoginForm";
 import TitleBar from "../components/TitleBar";
-import OrgRegisterForm from "../components/OrgRegisterForm";
+import IndRegisterForm from "../components/IndRegisterForm";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import reduxActions from "../redux/actions";
@@ -58,7 +58,7 @@ function IndividualHome() {
           {formState === "login" ? (
             <LoginForm setFormState={setFormState} accType={"ind"} />
           ) : (
-            <OrgRegisterForm setFormState={setFormState} />
+            <IndRegisterForm setFormState={setFormState} />
           )}
         </div>
       )}

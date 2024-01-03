@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import app from "../utils/axiosConfig";
 import Loader from "./Loader";
 
-function OrgRegisterForm({ setFormState }) {
+function IndRegisterForm({ setFormState }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -39,13 +39,13 @@ function OrgRegisterForm({ setFormState }) {
 
   const register = async () => {
     setLoading(true);
-    const url = "/api/accounts/organization/register";
+    const url = "/api/accounts/individual/register";
     const body = {
       username: username,
       password: password,
-      companyName: name,
-      contactPhone: phone,
-      contactEmail: email,
+      name: name,
+      phone: phone,
+      email: email,
     };
     await app.post(url, body);
     alert("Account created. Please login.");
@@ -94,13 +94,13 @@ function OrgRegisterForm({ setFormState }) {
           className="block text-gray-700 text-sm font-bold mb-2"
           for="company-name"
         >
-          Company Name
+          Name
         </label>
         <input
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           id="company-name"
           type="text"
-          placeholder="Acme Inc"
+          placeholder="Joe Smith"
           onChange={(e) => setName(e.target.value)}
         />
       </div>
@@ -109,7 +109,7 @@ function OrgRegisterForm({ setFormState }) {
           className="block text-gray-700 text-sm font-bold mb-2"
           for="company-phone"
         >
-          Company Phone
+          Phone
         </label>
         <input
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -124,7 +124,7 @@ function OrgRegisterForm({ setFormState }) {
           className="block text-gray-700 text-sm font-bold mb-2"
           for="company-email"
         >
-          Company Email
+          Email
         </label>
         <input
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -157,4 +157,4 @@ function OrgRegisterForm({ setFormState }) {
   );
 }
 
-export default OrgRegisterForm;
+export default IndRegisterForm;
