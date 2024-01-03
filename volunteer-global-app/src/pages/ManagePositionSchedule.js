@@ -37,12 +37,28 @@ function ManagePositionSchedule() {
   const navigate = useNavigate();
   const isLoggedIn = useSelector((state) => state.orgAccountReducer.isLoggedIn);
   const [position, setPosition] = useState(null);
+  const [volunteerDetails, setVolunteerDetails] = useState(null);
   const [events, setEvents] = useState(null);
   const [loading, setLoading] = useState(false);
   const [newDate, setNewDate] = useState(new Date());
   const [requiresRefresh, setRequiresRefresh] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedEventId, setSelectedEventId] = useState(false);
+  const [selectedNames, setSelectedNames] = useState([]);
+
+  const calcSignedUp = (slot, details) => {
+    var count = 0;
+    var names = [];
+    if (details) {
+      for (var detail of details) {
+        if (detail.TimeSlotIDs.find((item) => item === slot._id)) {
+          count++;
+          names.push(detail.user.Name);
+        }
+      }
+    }
+    return [count, names];
+  };
 
   useEffect(() => {
     if (!isLoggedIn) navigate(ROUTES.ORGANIZATION_HOME);
@@ -50,7 +66,10 @@ function ManagePositionSchedule() {
 
   useEffect(() => {
     const url = `/api/positions/${positionID}`;
-    app.get(url).then((data) => setPosition(data.data.position));
+    app.get(url).then((data) => {
+      setPosition(data.data.position);
+      setVolunteerDetails(data.data.volunteerDetails);
+    });
   }, [positionID]);
 
   useEffect(() => {
@@ -58,17 +77,19 @@ function ManagePositionSchedule() {
     app.get(url).then((data) => {
       const slots = data.data.timeSlots;
       const events = slots.map((slot) => {
+        const [count, names] = calcSignedUp(slot, volunteerDetails);
         return {
           start: moment(slot.DateTime).toDate(),
           end: moment(slot.DateTime).add(slot.Length, "seconds").toDate(),
-          title: "Volunteer Shift",
+          title: "Volunteer Shift | Signed Up:" + count,
           id: slot._id,
+          names: names,
         };
       });
       setEvents(events);
       if (requiresRefresh) setRequiresRefresh(false);
     });
-  }, [positionID, requiresRefresh]);
+  }, [positionID, requiresRefresh, volunteerDetails]);
 
   const createNew = () => {
     setLoading(true);
@@ -104,6 +125,7 @@ function ManagePositionSchedule() {
 
   const onEventSelect = (data) => {
     setSelectedEventId(data.id);
+    setSelectedNames(data.names);
     setModalOpen(true);
   };
 
@@ -151,6 +173,10 @@ function ManagePositionSchedule() {
         contentLabel="Example Modal"
         style={modalStyles}
       >
+        <p className="font-bold">Volunteers signed up:</p>
+        {selectedNames.map((item) => (
+          <p>{item}</p>
+        ))}
         <button
           className="flex mx-auto mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="button"

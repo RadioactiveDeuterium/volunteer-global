@@ -83,8 +83,21 @@ router.get(
 router.get('/:id', async function (req, res) {
   const position = await Position.findById(req.params.id);
   const org = await OrgAccount.findById(position.OrgID);
+  // get volunteer details
+  const userLinks = await UserPositionLink.find({
+    PositionID: req.params.id,
+    Status: 'accepted',
+  });
+  var volunteerDetails = [];
+  for (link of userLinks) {
+    const user = await IndAccount.findById(link.UserID);
+    volunteerDetails.push({
+      ...link._doc,
+      user: user._doc,
+    });
+  }
   res.status(200);
-  res.json({ position, org });
+  res.json({ position, org, volunteerDetails });
 });
 
 // update a position (position owner only)
