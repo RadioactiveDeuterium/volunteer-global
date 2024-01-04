@@ -65,6 +65,10 @@ function ApplyPosition() {
       <TitleBar content={`Apply: ${position ? position.Title : ""}`} />
       {position ? (
         <div className="w-2/3 mx-auto">
+          <p className="font-bold text-lg mx-auto w-max">
+            Position Description:
+          </p>
+          <p className="text-lg mx-auto w-max">{position.Description}</p>
           {position.ScreeningQuestions.map((question, i) => (
             <div className="mt-4">
               <p>{question}</p>

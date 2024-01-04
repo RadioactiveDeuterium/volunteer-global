@@ -11,6 +11,8 @@ import ApplyPosition from "./pages/ApplyPosition";
 import MyOppertunities from "./pages/MyOppertunities";
 import ManageIndividualSchedule from "./pages/ManageIndividualSchedule";
 import ReviewApplications from "./pages/ReviewApplications";
+import OrgEditAccount from "./pages/OrgEditAccount";
+import IndEditAccount from "./pages/IndEditAccount";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +54,14 @@ const router = createBrowserRouter([
   {
     path: ROUTES.REVIEW_APPLICATIONS,
     element: <ReviewApplications />,
+  },
+  {
+    path: ROUTES.EDIT_ORG_ACCOUNT,
+    element: <OrgEditAccount />,
+  },
+  {
+    path: ROUTES.EDIT_IND_ACCOUNT,
+    element: <IndEditAccount />,
   },
 ]);
 

@@ -36,7 +36,10 @@ function OrgHeader({ active }) {
             </p>
           </div>
           <div className="mr-0 ml-auto flex items-center">
-            <p className="text-xl font-bold leading-5 pr-4 cursor-pointer">
+            <p
+              className="text-xl font-bold leading-5 pr-4 cursor-pointer"
+              onClick={() => navigate(ROUTES.EDIT_ORG_ACCOUNT)}
+            >
               Account
             </p>
             <p className="text-xl font-bold leading-5 pr-4">|</p>

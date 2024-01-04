@@ -8,10 +8,12 @@ export const ROUTES = {
   MANAGE_POSITION_SCHEDULE_STUB: "/organization/manageSchedule/",
   REVIEW_APPLICATIONS: "/organization/reviewApplications/:positionID",
   REVIEW_APPLICATIONS_STUB: "/organization/reviewApplications/",
+  EDIT_ORG_ACCOUNT: "/organization/editAccount",
   INDIVIDUAL_HOME: "/volunteer",
   APPLY_POSITION: "/volunteer/apply/:positionID",
   APPLY_POSITION_STUB: "/volunteer/apply/",
   INDIVIDUAL_OPPERTUNITIES: "/volunteer/oppertunities",
   INDIVIDUAL_POSITION_SCHEDULE: "/volunteer/oppertunity/schedule/:positionID",
   INDIVIDUAL_POSITION_SCHEDULE_STUB: "/volunteer/oppertunity/schedule/",
+  EDIT_IND_ACCOUNT: "/volunteer/editAccount",
 };
