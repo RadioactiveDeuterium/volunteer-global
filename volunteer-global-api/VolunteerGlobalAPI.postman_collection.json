@@ -1,0 +1,933 @@
+{
+	"info": {
+		"_postman_id": "5477f727-93fc-4ffe-acf8-e2dfe8702f3c",
+		"name": "VolunteerGlobalAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31370412"
+	},
+	"item": [
+		{
+			"name": "localhost:5000/api/accounts/organization/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTVmYTdmMjNhNWM0YTI5MjhhZTk0OGUiLCJ1c2VybmFtZSI6InVzZXJuYW1lIiwiaWF0IjoxNzAwNzY5MDcwLCJleHAiOjE3MDA4NTU0NzB9.MDP7OE-8uBRKXsVdNXV1bVdZEREOGBfMLaVoUTgmXvc",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/api/accounts/organization/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"accounts",
+						"organization",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/accounts/organization/",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTVmYTdmMjNhNWM0YTI5MjhhZTk0OGUiLCJ1c2VybmFtZSI6InVzZXJuYW1lIiwiaWF0IjoxNzAwNzY5MDcwLCJleHAiOjE3MDA4NTU0NzB9.MDP7OE-8uBRKXsVdNXV1bVdZEREOGBfMLaVoUTgmXvc",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contactEmail\": \"test@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/accounts/organization/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"accounts",
+						"organization",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/accounts/organization/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testOrg2\",\r\n    \"password\": \"password\",\r\n    \"companyName\": \"test\",\r\n    \"contactPhone\": \"7052799470\",\r\n    \"contactEmail\": \"test@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/accounts/organization/register",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"accounts",
+						"organization",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/accounts/organization/changePassword",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"password2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/accounts/organization/changePassword",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"accounts",
+						"organization",
+						"changePassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/accounts/organization/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testOrg1\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/accounts/organization/login",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"accounts",
+						"organization",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/accounts/organization/logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"username\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/accounts/organization/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"accounts",
+						"organization",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/manage/acceptApplication/659439df14183db73e1381ae",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/manage/acceptApplication/659439df14183db73e1381ae",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"manage",
+						"acceptApplication",
+						"659439df14183db73e1381ae"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/manage/rejectApplication/659439df14183db73e1381ae Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/manage/rejectApplication/65943adf786aade4d0707309",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"manage",
+						"rejectApplication",
+						"65943adf786aade4d0707309"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/positions/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Test Position 3\",\r\n    \"description\": \"Test description\",\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/positions/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"positions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/positions/",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Test Position\",\r\n    \"description\": \"Test description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/positions/656001c94313d05b573bec5c",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"positions",
+						"656001c94313d05b573bec5c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/positions/",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Test Position\",\r\n    \"description\": \"Test description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/positions/6560c06d71a25d77cb66fee5",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"positions",
+						"6560c06d71a25d77cb66fee5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/positions/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/positions/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"positions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/positions/pendingApplications/659436c381a1ca36d5be3428",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/positions/pendingApplications/659436df81a1ca36d5be342d",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"positions",
+						"pendingApplications",
+						"659436df81a1ca36d5be342d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/positions/byLoggedOrg",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Test Position\",\r\n    \"description\": \"Test description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/positions/byLoggedOrg",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"positions",
+						"byLoggedOrg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/positions/656001c94313d05b573bec5c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Test Position\",\r\n    \"description\": \"Test description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/positions/659436c381a1ca36d5be3428",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"positions",
+						"659436c381a1ca36d5be3428"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/positions/applications/65675550327c17ea0eb087f9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Test Position\",\r\n    \"description\": \"Test description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/positions/applications/65942d31fdfd02f0c7ecd72f",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"positions",
+						"applications",
+						"65942d31fdfd02f0c7ecd72f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/timeSlots/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"positionID\": \"656001c94313d05b573bec5c\",\r\n    \"dateTime\": 1701450000,\r\n    \"length\": 7200000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/timeSlots/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"timeSlots",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/timeSlots/byPosition/656001c94313d05b573bec5c",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/timeSlots/byPosition/659436c381a1ca36d5be3428",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"timeSlots",
+						"byPosition",
+						"659436c381a1ca36d5be3428"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/timeSlots/6560c9d1dcd8471d4855fa4e",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/timeSlots/6560c9d1dcd8471d4855fa4e",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"timeSlots",
+						"6560c9d1dcd8471d4855fa4e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/timeSlots/6560c9d1dcd8471d4855fa4e",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"positionID\": \"656001c94313d05b573bec5c\",\r\n    \"dateTime\": 1701450000,\r\n    \"length\": 7200001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/timeSlots/6560c9d1dcd8471d4855fa4e",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"timeSlots",
+						"6560c9d1dcd8471d4855fa4e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/timeSlots/6560c9d1dcd8471d4855fa4e",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/timeSlots/6560c9d1dcd8471d4855fa4e",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"timeSlots",
+						"6560c9d1dcd8471d4855fa4e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/accounts/individual/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTVmYTdmMjNhNWM0YTI5MjhhZTk0OGUiLCJ1c2VybmFtZSI6InVzZXJuYW1lIiwiaWF0IjoxNzAwNzY5MDcwLCJleHAiOjE3MDA4NTU0NzB9.MDP7OE-8uBRKXsVdNXV1bVdZEREOGBfMLaVoUTgmXvc",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/api/accounts/individual/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"accounts",
+						"individual",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/accounts/individual/",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTVmYTdmMjNhNWM0YTI5MjhhZTk0OGUiLCJ1c2VybmFtZSI6InVzZXJuYW1lIiwiaWF0IjoxNzAwNzY5MDcwLCJleHAiOjE3MDA4NTU0NzB9.MDP7OE-8uBRKXsVdNXV1bVdZEREOGBfMLaVoUTgmXvc",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/accounts/individual/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"accounts",
+						"individual",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/accounts/individual/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testInd2\",\r\n    \"password\": \"password\",\r\n    \"name\": \"test\",\r\n    \"phone\": \"7054318555\",\r\n    \"email\": \"test2@example.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/accounts/individual/register",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"accounts",
+						"individual",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/accounts/individual/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testInd1\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/accounts/individual/login",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"accounts",
+						"individual",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/accounts/individual/changePassword",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/accounts/individual/changePassword",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"accounts",
+						"individual",
+						"changePassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/accounts/individual/logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"username\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/accounts/individual/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"accounts",
+						"individual",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/manage/apply/65675550327c17ea0eb087f9",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"screeningResponses\": [\"test\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/manage/apply/659436df81a1ca36d5be342d",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"manage",
+						"apply",
+						"659436df81a1ca36d5be342d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/manage/withdrawApplication/65943adf786aade4d0707309",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/manage/withdrawApplication/65944402d2a551908c3ae483",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"manage",
+						"withdrawApplication",
+						"65944402d2a551908c3ae483"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/manage/addTimeslot",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"timeslotID\": \"6594390c355d60aba2510b65\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/manage/addTimeslot/659439df14183db73e1381ae",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"manage",
+						"addTimeslot",
+						"659439df14183db73e1381ae"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/manage/removeTimeslot",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"timeslotID\": \"6594390c355d60aba2510b65\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/manage/removeTimeslot/659439df14183db73e1381ae",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"manage",
+						"removeTimeslot",
+						"659439df14183db73e1381ae"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/api/positions/userApplications/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/positions/userApplications/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"positions",
+						"userApplications",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
